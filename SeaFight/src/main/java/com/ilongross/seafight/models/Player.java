@@ -66,9 +66,11 @@ public class Player {
             }
             case Shot.DAMAGE -> previousShot = shotAfterDamage(1);
             case Shot.KILL -> {
-                shipUnderFire = new Ship();
-                shipUnderFire.setSize(1);
-                shipUnderFire.addCell(previousShot);
+                if(shipUnderFire == null) {
+                    shipUnderFire = new Ship();
+                    shipUnderFire.setSize(1);
+                    shipUnderFire.addCell(previousShot);
+                }
                 markCellsAroundShipAfterKill();
                 tempCellsForFutureShoots.clear();
                 previousShot = randomShot();
@@ -118,13 +120,9 @@ public class Player {
             shipUnderFire.setSize(shipUnderFire.getShipCells().size());
         }
 
-//        showShipUnderFire("underFire");
-//        showCells("temp", tempCellsForFutureShoots);
-
         nextShot = tempCellsForFutureShoots.get(rand.nextInt(tempCellsForFutureShoots.size()));
         tempCellsForFutureShoots.remove(nextShot);
         previousShot = nextShot;
-//        showCell("nextShot", nextShot);
         return nextShot;
     }
 
