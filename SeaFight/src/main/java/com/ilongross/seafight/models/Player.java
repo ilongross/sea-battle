@@ -70,6 +70,7 @@ public class Player {
                 shipUnderFire.setSize(1);
                 shipUnderFire.addCell(previousShot);
                 markCellsAroundShipAfterKill();
+                tempCellsForFutureShoots.clear();
                 previousShot = randomShot();
             }
             case Shot.WIN -> System.out.print("");
@@ -172,11 +173,9 @@ public class Player {
 
     private int[] getBoundaryCell(String bound) {
         int minX = shipUnderFire.getCell(0)[0];
-        int maxX = shipUnderFire.getCell(shipUnderFire.getSize()-1)[0];
         int minY = shipUnderFire.getCell(0)[1];
+        int maxX = shipUnderFire.getCell(shipUnderFire.getSize()-1)[0];
         int maxY = shipUnderFire.getCell(shipUnderFire.getSize()-1)[1];
-
-//        showShipUnderFire("getBoundaryCell()");
 
         for (int[] cell : shipUnderFire.getShipCells()) {
             if(cell[0] <= minX)
@@ -193,6 +192,7 @@ public class Player {
             result = new int[]{minX, minY};
         if(bound.equals("last"))
             result = new int[]{maxX, maxY};
+
         return result;
     }
 
@@ -206,13 +206,15 @@ public class Player {
                     shot = tempCellsForFutureShoots.get(rand.nextInt(tempCellsForFutureShoots.size()));
                     approach = true;
                 }
-                int coord1 = rand.nextInt(10);
-                int coord2 = rand.nextInt(10);
-                if (enemyMap.getBattleMap()[coord1][coord2] == Shot.NULL) {
-                    shot[0] = coord1;
-                    shot[1] = coord2;
-                    shotCounter++;
-                    approach = true;
+                else {
+                    int coord1 = rand.nextInt(10);
+                    int coord2 = rand.nextInt(10);
+                    if (enemyMap.getBattleMap()[coord1][coord2] == Shot.NULL) {
+                        shot[0] = coord1;
+                        shot[1] = coord2;
+                        shotCounter++;
+                        approach = true;
+                    }
                 }
             }
         return shot;

@@ -45,8 +45,6 @@ public class Game {
         Player currentPlayer = null;
         Player successPlayerFromPreviousStep = null;
 
-//        showShips();
-
         while(gameProcess) {
 
             if(currentPlayer == null) {
@@ -147,8 +145,8 @@ public class Game {
 
     public void showMaps() {
         for (Player p : players) {
-//            if(!p.getName().contains("AI"))
-//                continue;
+            if(!p.getName().contains("AI"))
+                continue;
             p.showMap();
         }
     }
