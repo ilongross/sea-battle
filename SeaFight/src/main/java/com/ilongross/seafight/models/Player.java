@@ -150,8 +150,6 @@ public class Player {
 
         int[] firstCell = getBoundaryCell("first");
         int[] lastCell = getBoundaryCell("last");
-        showCell("first boundary", firstCell);
-        showCell("last boundary", lastCell);
 
         for (int i = firstCell[0]-1; i <= lastCell[0]+1; i++) {
             if(i < 0 || i > 9) {

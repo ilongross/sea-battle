@@ -19,7 +19,6 @@ public class Game {
 
     public Game() {
         Player p1 = new Player("BattleShipAI");
-//        Player p2 = new Player("BattleShipAI2");
         Player p2 = new Player(scanPlayerName());
         this.players.add(p1);
         this.players.add(p2);
@@ -145,7 +144,7 @@ public class Game {
 
     public void showMaps() {
         for (Player p : players) {
-            if(!p.getName().contains("AI"))
+            if(p.getName().contains("AI"))
                 continue;
             p.showMap();
         }
