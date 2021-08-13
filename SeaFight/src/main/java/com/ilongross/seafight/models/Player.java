@@ -69,8 +69,8 @@ public class Player {
                 if(shipUnderFire == null) {
                     shipUnderFire = new Ship();
                     shipUnderFire.setSize(1);
-                    shipUnderFire.addCell(previousShot);
                 }
+                shipUnderFire.addCell(previousShot);
                 markCellsAroundShipAfterKill();
                 tempCellsForFutureShoots.clear();
                 previousShot = randomShot();
@@ -150,6 +150,8 @@ public class Player {
 
         int[] firstCell = getBoundaryCell("first");
         int[] lastCell = getBoundaryCell("last");
+        showCell("first boundary", firstCell);
+        showCell("last boundary", lastCell);
 
         for (int i = firstCell[0]-1; i <= lastCell[0]+1; i++) {
             if(i < 0 || i > 9) {
@@ -159,10 +161,10 @@ public class Player {
                 if(j < 0 || j > 9) {
                     continue;
                 }
-                if(enemyMap.getBattleMap()[i][j] >= 1)
-                    continue;
-                int[] tempCell = {i, j};
-                markEnemyMap(tempCell, 1);
+                if(enemyMap.getBattleMap()[i][j] == Shot.NULL) {
+                    int[] tempCell = {i, j};
+                    markEnemyMap(tempCell, 1);
+                }
             }
         }
         shipUnderFire = null;
