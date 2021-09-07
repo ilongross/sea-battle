@@ -13,10 +13,16 @@ public class Map {
     private final int mapSize;
     private int[][] battleMap;
     private ArrayList<Ship> ships = new ArrayList<>();
+//
+//    public Map(GameProperties props) {
+//        this.props = props;
+//        this.mapSize = props.getFieldSize();
+//        this.battleMap = new int[mapSize][mapSize];
+//    }
 
-    public Map(GameProperties props) {
-        this.props = props;
-        this.mapSize = props.getFieldSize();
+    public Map() {
+        this.props = new GameProperties("src/main/resources/application.properties");
+        this.mapSize = 10;
         this.battleMap = new int[mapSize][mapSize];
     }
 

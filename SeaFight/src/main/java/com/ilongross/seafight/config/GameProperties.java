@@ -1,56 +1,50 @@
 package com.ilongross.seafight.config;
 
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
-public class GameProperties {
-    private Properties properties;
-    private String propsPath;
+public class GameProperties extends Properties{
 
-    public GameProperties(String propsPath) {
-        this.propsPath = propsPath;
-        this.properties = new Properties();
-    }
 
-    public int getFieldSize() {
+    public GameProperties(String pathProperties) {
         try {
-            FileInputStream fis = new FileInputStream(propsPath);
-            properties.load(fis);
-            fis.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            FileReader fr = new FileReader(pathProperties);
+            BufferedReader br = new BufferedReader(fr);
+            this.load(br);
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("Ошибка чтения файла: application.properties");
         }
-        return Integer.valueOf(properties.getProperty("map.size"));
     }
 
     public int getCountOfShips(int deckSize) {
-        try {
-            FileInputStream fis = new FileInputStream(propsPath);
-            properties.load(fis);
-            fis.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            FileInputStream fis = new FileInputStream(propsPath);
+//            properties.load(fis);
+//            fis.close();
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         int result = 0;
         switch (deckSize) {
             case 1:
-                result = Integer.valueOf(properties.getProperty("ship.1deck"));
+//                result = Integer.valueOf(properties.getProperty("ship.1deck"));
+                result = 4;
                 break;
             case 2:
-                result = Integer.valueOf(properties.getProperty("ship.2deck"));
+//                result = Integer.valueOf(properties.getProperty("ship.2deck"));
+                result = 3;
                 break;
             case 3:
-                result = Integer.valueOf(properties.getProperty("ship.3deck"));
+//                result = Integer.valueOf(properties.getProperty("ship.3deck"));
+                result = 2;
                 break;
             case 4:
-                result = Integer.valueOf(properties.getProperty("ship.4deck"));
+//                result = Integer.valueOf(properties.getProperty("ship.4deck"));
+                result = 1;
                 break;
             default:
                 return result;

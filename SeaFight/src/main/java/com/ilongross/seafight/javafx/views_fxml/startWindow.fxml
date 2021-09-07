@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:controller="com.ilongross.seafight.javafx.controllers.StartWindowFxController"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+          prefWidth="300.0" prefHeight="250.0" >
+<VBox minWidth="300" minHeight="250" >
+    <Label minWidth="100" minHeight="25" text="Твое имя"/>
+    <TextField fx:id="userName" minWidth="200" minHeight="25"/>
+    <Label fx:id="errorNameLabel" minWidth="100" minHeight="25" text="error"/>
+    <Button fx:id="playButton" minWidth="150" minHeight="50" text="Играть" onAction="#clickToPlay"/>
+    <Label minWidth="100" maxHeight="25" text="Made by 'Ilon Gross, Inc.'"/>
+</VBox>
+
+</GridPane>

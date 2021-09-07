@@ -22,6 +22,27 @@
             <version>${springVersion}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>15.0.1</version>
+        </dependency>
+
     </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.6</version>
+                <configuration>
+                    <mainClass>com.ilongross.seafight.javafx.AppGUI</mainClass>
+<!--                    <mainClass>com.ilongross.seafight.javafx.forms.EntryForm</mainClass>-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

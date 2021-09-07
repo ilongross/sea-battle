@@ -9,9 +9,8 @@ import java.util.Random;
 
 public class Player {
 
-    private static final String PATH_PROPERTIES = "src/main/resources/application.properties";
 
-    private final Map map = new Map(new GameProperties(PATH_PROPERTIES));
+    private final Map map = new Map();
     private final String name;
     private ArrayList<Ship> ships = new ArrayList<>();
     private boolean rightToRepeatShoot = false;
@@ -25,7 +24,7 @@ public class Player {
 
     private Ship shipUnderFire = null;
 
-    private Map enemyMap = new Map(new GameProperties(PATH_PROPERTIES));
+    private Map enemyMap = new Map();
 
 
     public Player(String name) {

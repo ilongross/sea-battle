@@ -1,5 +1,6 @@
 package com.ilongross.seafight.models;
 
+import com.ilongross.seafight.Main;
 import com.ilongross.seafight.concurrency.ScanInput;
 import com.ilongross.seafight.concurrency.ThreadAction;
 import com.ilongross.seafight.config.Shot;
@@ -17,9 +18,11 @@ public class Game {
     private GameSetup gameSetup = new GameSetup();
 
 
+
+
     public Game() {
-        Player p1 = new Player("BattleShipAI");
-        Player p2 = new Player(scanPlayerName());
+        Player p1 = new Player(Main.properties.getProperty("player.name.pc"));
+        Player p2 = new Player(Main.properties.getProperty("player.name.user"));
         this.players.add(p1);
         this.players.add(p2);
     }
